@@ -1,0 +1,27 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+
+driver.get("https://www.target.com/")
+
+sign_in_button = driver.find_element(By.XPATH, "//button[@data-test='accountNav-Account-Menu']")
+sign_in_button.click()
+    
+sign_in_link = driver.find_element(By.XPATH, "//a[@data-test='accountNav-signIn']")
+sign_in_link.click()
+
+sign_in_text = driver.find_element(By.XPATH, "//h2[contains(text(),'Sign into your Target account')]")
+
+sign_in_submit_button = driver.find_element(By.XPATH, "//button[@data-test='signin-button']")
+
+if sign_in_text and sign_in_submit_button:
+    print("SignIn page verification passed.")
+    else:
+        print("SignIn page verification failed.")
+
+driver.quit()
