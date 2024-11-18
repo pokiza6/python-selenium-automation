@@ -20,9 +20,11 @@ driver.find_element(By.ID, "//input[@id='ap_email']")
 #Find element 'Continue button',by multiple attr:
 driver.find_element(By.XPATH, "//input[@aria-describedby='legalTextRow' and @type='submit']")
 
-driver.find_element(By.XPATH, "//select[@aria-describedby='searchDropdownDescription']")
+#Find element 'Privacy Notice link',by partial attr:
+driver.find_element(By.XPATH,'//a[contains(@href, "ap_signin_notification_privacy_notice")]')
 
-
+#Find element 'Conditions of use link',
+driver.find_element(By.XPATH,"//a[@class='a-link-normal a-nowrap' and @rel='noopener' and contains(text(),'Conditions of Use')]")
 
 #Find element 'Need help?',by XPATH,partial and attr:
 driver.find_element(By.XPATH, "//span[@class='a-expander-prompt' and contains(text(),'Need help?')]")
